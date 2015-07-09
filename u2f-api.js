@@ -1,11 +1,11 @@
-// Copyright 2014 Google Inc. All rights reserved.
+// Copyright 2014 Google Inc. All rights reserved
 //
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
 /**
- * @fileoverview The U2F api.
+ * @fileoverview High-level U2F API for Chrome 41+.
  */
 
 'use strict';
@@ -125,41 +125,9 @@ u2f.RegisterResponse;
 /**
  * Sets up a MessagePort to the U2F extension using the
  * available mechanisms.
- * @param {function((MessagePort|u2f.WrappedChromeRuntimePort_))} callback
+ * @param {function(u2f.WrappedChromeRuntimePort_)} callback
  */
 u2f.getMessagePort = function(callback) {
-  if (typeof chrome != 'undefined' && chrome.runtime) {
-    // The actual message here does not matter, but we need to get a reply
-    // for the callback to run. Thus, send an empty signature request
-    // in order to get a failure response.
-    var msg = {
-      type: u2f.MessageTypes.U2F_SIGN_REQUEST,
-      signRequests: []
-    };
-    chrome.runtime.sendMessage(u2f.EXTENSION_ID, msg, function() {
-      if (!chrome.runtime.lastError) {
-        // We are on a whitelisted origin and can talk directly
-        // with the extension.
-        u2f.getChromeRuntimePort_(callback);
-      } else {
-        // chrome.runtime was available, but we couldn't message
-        // the extension directly, use iframe
-        u2f.getIframePort_(callback);
-      }
-    });
-  } else {
-    // chrome.runtime was not available at all, which is normal
-    // when this origin doesn't have access to any extensions.
-    u2f.getIframePort_(callback);
-  }
-};
-
-/**
- * Connects directly to the extension via chrome.runtime.connect
- * @param {function(u2f.WrappedChromeRuntimePort_)} callback
- * @private
- */
-u2f.getChromeRuntimePort_ = function(callback) {
   var port = chrome.runtime.connect(u2f.EXTENSION_ID,
     {'includeTlsChannelId': true});
   setTimeout(function() {
@@ -202,37 +170,6 @@ u2f.WrappedChromeRuntimePort_.prototype.addEventListener =
   } else {
     console.error('WrappedChromeRuntimePort only supports onMessage');
   }
-};
-
-/**
- * Sets up an embedded trampoline iframe, sourced from the extension.
- * @param {function(MessagePort)} callback
- * @private
- */
-u2f.getIframePort_ = function(callback) {
-  // Create the iframe
-  var iframeOrigin = 'chrome-extension://' + u2f.EXTENSION_ID;
-  var iframe = document.createElement('iframe');
-  iframe.src = iframeOrigin + '/u2f-comms.html';
-  iframe.setAttribute('style', 'display:none');
-  document.body.appendChild(iframe);
-
-  var channel = new MessageChannel();
-  var ready = function(message) {
-    if (message.data == 'ready') {
-      channel.port1.removeEventListener('message', ready);
-      callback(channel.port1);
-    } else {
-      console.error('First event on iframe port was not "ready"');
-    }
-  };
-  channel.port1.addEventListener('message', ready);
-  channel.port1.start();
-
-  iframe.addEventListener('load', function() {
-    // Deliver the port to the iframe and initialize
-    iframe.contentWindow.postMessage('init', iframeOrigin, [channel.port2]);
-  });
 };
 
 
