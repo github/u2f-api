@@ -10,11 +10,15 @@
 
 'use strict';
 
-if (!('u2f' in window) && 'chrome' in window && chrome.runtime) {
+(function (){
+  if ('u2f' in window || !('chrome' in window) || !chrome.runtime) {
+    return;
+  }
+
   /** Namespace for the U2F api.
    * @type {Object}
    */
-  var u2f = {};
+  var u2f = window.u2f = {};
 
   /**
    * The U2F extension id
@@ -297,4 +301,4 @@ if (!('u2f' in window) && 'chrome' in window && chrome.runtime) {
       port.postMessage(req);
     });
   };
-}
+})();
