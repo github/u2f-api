@@ -11,7 +11,7 @@
 'use strict';
 
 (function (){
-  if ('u2f' in window || !('chrome' in window) || !chrome.runtime) {
+  if ('u2f' in window || !('chrome' in window)) {
     return;
   }
 
