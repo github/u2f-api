@@ -1,0 +1,95 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/opt/nodes/0.12.7/bin/node',
+1 verbose cli   '/opt/boxen/nodenv/versions/0.12/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/mastahyeti/Projects/u2f-api',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/mastahyeti/.npm/u2f-api/0.4.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/mastahyeti/.npm/u2f-api/0.4.0/package.tgz',
+9 verbose tar pack   '/Users/mastahyeti/Projects/u2f-api' ]
+10 verbose tarball /Users/mastahyeti/.npm/u2f-api/0.4.0/package.tgz
+11 verbose folder /Users/mastahyeti/Projects/u2f-api
+12 info prepublish u2f-api@0.4.0
+13 verbose addLocalTarball adding from inside cache /Users/mastahyeti/.npm/u2f-api/0.4.0/package.tgz
+14 silly cache afterAdd u2f-api@0.4.0
+15 verbose afterAdd /Users/mastahyeti/.npm/u2f-api/0.4.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/mastahyeti/.npm/u2f-api/0.4.0/package/package.json written
+17 silly publish { name: 'u2f-api',
+17 silly publish   main: 'u2f-api.js',
+17 silly publish   version: '0.4.0',
+17 silly publish   authors: [ 'arnar' ],
+17 silly publish   description: 'High level JavaScript API for interacting with FIDO U2F devices in Chrome',
+17 silly publish   keywords: [ 'fido', 'u2f' ],
+17 silly publish   license: 'BSD-3-Clause',
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/mastahyeti/u2f-api.git' },
+17 silly publish   homepage: 'https://fidoalliance.org/',
+17 silly publish   ignore: [ '**/.*', 'node_modules', 'bower_components', 'test', 'tests' ],
+17 silly publish   readme: '# U2F API\n\nThis is a JavaScript polyfill, implementing the high-level U2F JavaScript API\nfor Chrome.\n\nGoogle wrote and owns this code. It\'s just a pain to manually pull it from their\n[u2f-ref-code](https://github.com/google/u2f-ref-code) repo, so I made a NPM\npackage.\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '9b00a297ee3dada79c244881cf52cdbf99a93a9c',
+17 silly publish   bugs: { url: 'https://github.com/mastahyeti/u2f-api/issues' },
+17 silly publish   _id: 'u2f-api@0.4.0',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: '040c072955fb66f290063ab89b64e7c490cfdfa4',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name u2f-api
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/u2f-api
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/mastahyeti/.npm/u2f-api/0.4.0/package.tgz
+25 verbose request uri https://registry.npmjs.org/u2f-api
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 12:41:50
+28 verbose request using bearer token for auth
+29 verbose request id f0f19819ef75ac80
+30 http request PUT https://registry.npmjs.org/u2f-api
+31 http 403 https://registry.npmjs.org/u2f-api
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '99',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Fri, 05 Feb 2016 19:41:50 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-dfw1826-DFW',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1454701310.292093,VS0,VE302' }
+33 verbose request invalidating /Users/mastahyeti/.npm/registry.npmjs.org/u2f-api on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: You do not have permission to publish 'u2f-api'. Are you logged in as the correct user? : u2f-api
+35 verbose stack     at CachingRegistryClient.<anonymous> (/opt/nodes/0.12.7/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+35 verbose stack     at Request._callback (/opt/nodes/0.12.7/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+35 verbose stack     at Request.self.callback (/opt/nodes/0.12.7/lib/node_modules/npm/node_modules/request/request.js:354:22)
+35 verbose stack     at Request.emit (events.js:110:17)
+35 verbose stack     at Request.<anonymous> (/opt/nodes/0.12.7/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+35 verbose stack     at Request.emit (events.js:129:20)
+35 verbose stack     at IncomingMessage.<anonymous> (/opt/nodes/0.12.7/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+35 verbose stack     at IncomingMessage.emit (events.js:129:20)
+35 verbose stack     at _stream_readable.js:908:16
+35 verbose stack     at process._tickCallback (node.js:355:11)
+36 verbose statusCode 403
+37 verbose pkgid u2f-api
+38 verbose cwd /Users/mastahyeti/Projects/u2f-api
+39 error Darwin 15.3.0
+40 error argv "/opt/nodes/0.12.7/bin/node" "/opt/boxen/nodenv/versions/0.12/bin/npm" "publish"
+41 error node v0.12.7
+42 error npm  v2.11.3
+43 error code E403
+44 error You do not have permission to publish 'u2f-api'. Are you logged in as the correct user? : u2f-api
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
