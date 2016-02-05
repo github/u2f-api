@@ -10,7 +10,11 @@
     "fido",
     "u2f"
   ],
-  "license": "BSD",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mastahyeti/u2f-api"
+  },
   "homepage": "https://fidoalliance.org/",
   "ignore": [
     "**/.*",
