@@ -1,7 +1,7 @@
 {
   "name": "u2f-api",
   "main": "u2f-api.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "authors": [
     "arnar"
   ],
