@@ -1,7 +1,7 @@
 {
   "name": "u2f-api-polyfill",
   "main": "u2f-api-polyfill.js",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "authors": [
     "arnar"
   ],
