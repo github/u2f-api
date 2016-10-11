@@ -11,7 +11,7 @@
 'use strict';
 
 (function (){
-  var isChrome = 'chrome' in window && !window.navigator.userAgent.includes('Edge');
+  var isChrome = 'chrome' in window && window.navigator.userAgent.indexOf('Edge') < 0;
   if ('u2f' in window || !isChrome) {
     return;
   }
