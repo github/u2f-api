@@ -4,12 +4,19 @@
 //license that can be found in the LICENSE file or at
 //https://developers.google.com/open-source/licenses/bsd
 
+// NOTE FROM MAINTAINER: This file is copied from google/u2f-ref-code with as
+// few alterations as possible. Any changes that were necessary are annotated
+// with "NECESSARY CHANGE". These changes, as well as this note, should be
+// preserved when updating this file from the source.
+
 /**
  * @fileoverview The U2F api.
  */
 'use strict';
 
+// NECESSARY CHANGE: wrap the whole file in a closure
 (function (){
+  // NECESSARY CHANGE: detect UA to avoid clobbering other browser's U2F API.
   var isChrome = 'chrome' in window && window.navigator.userAgent.indexOf('Edge') < 0;
   if ('u2f' in window || !isChrome) {
     return;
@@ -19,7 +26,8 @@
    * Namespace for the U2F api.
    * @type {Object}
    */
-  var u2f = u2f || {};
+  // NECESSARY CHANGE: define the window.u2f API.
+  var u2f = window.u2f = {};
 
   /**
    * FIDO U2F Javascript API Version
