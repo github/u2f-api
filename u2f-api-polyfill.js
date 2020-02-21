@@ -113,7 +113,7 @@
 
   /**
    * Data object for a single sign request.
-   * @typedef {enum {BLUETOOTH_RADIO, BLUETOOTH_LOW_ENERGY, USB, NFC, USB_INTERNAL}}
+   * @typedef {enum {BLUETOOTH_RADIO, BLUETOOTH_LOW_ENERGY, USB, NFC, USB_INTERNAL, LIGHTNING}}
    */
   u2f.Transport;
 
